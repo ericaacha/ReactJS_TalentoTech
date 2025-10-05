@@ -1,0 +1,22 @@
+.titulo-tienda {
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin: 10px 0;
+  padding: 15px;
+  position: relative;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.titulo-tienda.minimalista {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #333;
+  text-transform: none;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
