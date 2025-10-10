@@ -32,13 +32,12 @@ if(error)
     return <>Error: {error}</>
 
 return <>
-<div className={styles.listadoProductos}>
-        {
+    <div className={styles.listadoProductos}>
+    {
         listadoProductos.map( (item,index) =>
             <Tarjeta key= {index} item={item} agregarAlCarrito={agregarAlCarrito}></Tarjeta>
-
         )
-        }
+    }
 </div>
     </> 
 
