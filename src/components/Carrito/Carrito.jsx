@@ -1,51 +1,32 @@
-import { useState } from "react";
+
+const Carrito = ({productos, vaciarCarrito})=>{
 
 
-const Carrito = ()=>{
-
-    
-    let listadoProductos = ["Camisa","Pantalón","Remera","Zapatillas"];
-    const[carrito, setCarrito]=useState([]);
-
-    const agregarCarrito = (producto)=>{
-        console.log(carrito)
-    setCarrito([...carrito, producto]);
-    }
-
-    const vaciarCarrito = (e)=> {
-        e.eve
-        setCarrito([])}
+if(productos.length == 0)
+    return <>Carrito Vacío</>
 
 
-return(<>
+if(productos.length>0){
 
-<ul>
-{listadoProductos.map( (item,index) =>
-    <li key= {index}>{ item }
-        <button onClick={()=>{agregarCarrito(item)}}>Agregar</button>
-    </li>
+    return(<>
+    <ul>
+        {
+        productos.map((item, index) =>
+        <li key={index}> {item.title}</li>
+        )
+        }
+    </ul>
 
-)}
-</ul>
+    <button onClick={vaciarCarrito}>Vaciar carrito</button>
 
-<ul>
-    {
-carrito.map((item, index) =>
- <li key={index}> {item}</li>
-)
+    </>
+    );
 }
-</ul>
-<button onClick={vaciarCarrito}>Vaciar carrito</button>
-
-
-{/* items del carrito */}
-{/* boton vaciar carrito */}
-</>
-
-);
-
 
 }
+
+
+
 
 
 export default Carrito;
