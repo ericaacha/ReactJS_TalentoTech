@@ -1,6 +1,6 @@
 import styles from './Carrito.module.css'
 
-const Carrito = ({productos, vaciarCarrito})=>{
+const Carrito = ({productos, vaciarCarrito, eliminarProducto})=>{
 
 
 if(productos == undefined || productos.length == 0)
@@ -15,6 +15,7 @@ if(productos.length>0){
             <li key={index} className={styles.carritoItem}>
             <span className={styles.carritoTitle}>{item.title}</span>
             <span className={styles.carritoPrice}>${item.price}</span>
+            <span className={styles.carritoEliminar}><button onClick={()=>eliminarProducto(item)}>Eliminar</button></span>
             </li>
         ))}
     </ul>

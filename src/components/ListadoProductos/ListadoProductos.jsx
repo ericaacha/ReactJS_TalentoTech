@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Tarjeta from "../Tarjeta/Tarjeta";
 import styles from './ListadoProductos.module.css'
 
-const ListadoProductos = ({agregarAlCarrito})=>{
+const ListadoProductos = ({agregarAlCarrito, eliminarProducto})=>{
 
     const [listadoProductos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
@@ -35,10 +35,13 @@ return <>
     <div className={styles.listadoProductos}>
     {
         listadoProductos.map( (item,index) =>
-            <Tarjeta key= {index} item={item} agregarAlCarrito={agregarAlCarrito}></Tarjeta>
+            <Tarjeta key= {index}
+                    item={item} 
+                    agregarAlCarrito={agregarAlCarrito} 
+                    ></Tarjeta>
         )
     }
-</div>
+    </div>
     </> 
 
 }

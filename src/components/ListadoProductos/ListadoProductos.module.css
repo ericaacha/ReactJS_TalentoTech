@@ -5,6 +5,7 @@
   gap: 20px;
   padding: 20px;
   justify-items: center;
-  align-items: stretch; /* 👈 hace que todas las tarjetas tengan el mismo alto */
+  align-items: stretch; 
   background-color: #f8f9fa;
+  width: 1000px;
 }

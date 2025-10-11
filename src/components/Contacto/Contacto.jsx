@@ -4,7 +4,7 @@ const Contacto = ()=>{
 
 
     return <>
-    Contacto
+    Hola desde Contacto
     </>
 }
 

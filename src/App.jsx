@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './components/About/About'
 import Carrito from './components/Carrito/Carrito'
 import ListadoProductos from './components/ListadoProductos/ListadoProductos'
+import DetalleProducto from './components/DetalleProducto/DetalleProducto'
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
     const vaciarCarrito = ()=>{
         setCarrito([]);
     }
+    
+    const eliminarProducto = (item)=>{
+        setCarrito(carrito.filter(producto => producto.id != item.id))
+    }
 
   return (
     <div>
@@ -35,8 +40,9 @@ function App() {
           <Route path="/galeria" element={<Gallery />}></Route>
           <Route path="/contacto" element={<Contacto />}></Route>
           <Route path="/about" element={<About />}></Route>
-          <Route path="/productos" element={<ListadoProductos agregarAlCarrito={agregarProducto} />}></Route>
-          <Route path="/carrito"  element={ <Carrito productos={carrito} vaciarCarrito={vaciarCarrito} />}></Route>
+          <Route path="/productos" element={<ListadoProductos agregarAlCarrito={agregarProducto} eliminarProducto={eliminarProducto}/>}></Route>
+          <Route path="/carrito"  element={ <Carrito productos={carrito} vaciarCarrito={vaciarCarrito} eliminarProducto={eliminarProducto}/>}></Route>
+          <Route path="/detalle/:id" element={<DetalleProducto  />}></Route>
         </Routes>
      
      
