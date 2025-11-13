@@ -1,13 +1,19 @@
 import './Header.css'
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
 
     return <>
-    <header>
-        <h1 className="titulo-tienda minimalista">Tienda online</h1>
-    </header>
- 
+
+        <header className="header-minimalista">
+            <h1 className="titulo-minimalista">Tienda online</h1>
+            <Link className="botonMinimalista" to="/login">Iniciar sesión</Link>
+            <Link className="botonMinimalista" to="/administracion">Administración</Link>
+   
+        </header>
+
+
     </>
 }
 

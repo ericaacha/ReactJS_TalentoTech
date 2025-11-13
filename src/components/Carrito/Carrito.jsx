@@ -1,17 +1,20 @@
+import { CarritoContext } from '../../contexts/CarritoContext';
 import styles from './Carrito.module.css'
+import { useContext } from 'react';
 
-const Carrito = ({productos, vaciarCarrito, eliminarProducto})=>{
+const Carrito = ()=>{
 
+const {carrito, vaciarCarrito, eliminarProducto} = useContext(CarritoContext);
 
-if(productos == undefined || productos.length == 0)
+if(carrito == undefined || carrito.length == 0)
     return <>Carrito Vacío</>
 
 
-if(productos.length>0){
+if(carrito.length>0){
 
     return(<>
     <ul className={styles.carritoLista}>
-        {productos.map((item, index) => (
+        {carrito.map((item, index) => (
             <li key={index} className={styles.carritoItem}>
             <span className={styles.carritoTitle}>{item.title}</span>
             <span className={styles.carritoPrice}>${item.price}</span>

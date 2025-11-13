@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Tarjeta from "../Tarjeta/Tarjeta";
 import styles from './ListadoProductos.module.css'
+import { CarritoContext } from '../../contexts/CarritoContext';
 
-const ListadoProductos = ({agregarAlCarrito, eliminarProducto})=>{
+const ListadoProductos = ({})=>{
 
     const [listadoProductos, setProductos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setErrorFetch] = useState(null);
+
 
     useEffect(()=>{
         fetch('https://fakestoreapi.com/products')
@@ -37,7 +39,6 @@ return <>
         listadoProductos.map( (item,index) =>
             <Tarjeta key= {index}
                     item={item} 
-                    agregarAlCarrito={agregarAlCarrito} 
                     ></Tarjeta>
         )
     }

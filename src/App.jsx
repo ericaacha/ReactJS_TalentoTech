@@ -2,34 +2,23 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import MostrarListado from './components/MostrarListado'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Gallery from './components/Gallery/Gallery'
 import Nav from './components/Nav/Nav'
-import Contacto from './components/Contacto/Contacto'
+import Administracion from './components/Administracion/Administracion'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './components/About/About'
 import Carrito from './components/Carrito/Carrito'
 import ListadoProductos from './components/ListadoProductos/ListadoProductos'
 import DetalleProducto from './components/DetalleProducto/DetalleProducto'
-
+import Login from './components/Login/Login'
+import RutaProtegida from './components/Utils/RutaProtegida'
 
 function App() {
 
-   const[carrito, setCarrito] = useState([]);
+   const[isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const agregarProducto = (producto)=>{
-        setCarrito([...carrito, producto]);
-    }
-
-    const vaciarCarrito = ()=>{
-        setCarrito([]);
-    }
-    
-    const eliminarProducto = (item)=>{
-        setCarrito(carrito.filter(producto => producto.id != item.id))
-    }
 
   return (
     <div>
@@ -38,11 +27,20 @@ function App() {
       <Nav></Nav>
        <Routes>
           <Route path="/galeria" element={<Gallery />}></Route>
-          <Route path="/contacto" element={<Contacto />}></Route>
+          <Route path="/administracion" element={
+            <RutaProtegida>
+                <Administracion />
+            </RutaProtegida>}>
+          </Route>
           <Route path="/about" element={<About />}></Route>
-          <Route path="/productos" element={<ListadoProductos agregarAlCarrito={agregarProducto} eliminarProducto={eliminarProducto}/>}></Route>
-          <Route path="/carrito"  element={ <Carrito productos={carrito} vaciarCarrito={vaciarCarrito} eliminarProducto={eliminarProducto}/>}></Route>
+          <Route path="/productos" element={<ListadoProductos/>}></Route>
+          <Route path="/carrito"  element={ 
+            <RutaProtegida>
+              <Carrito />
+             </RutaProtegida>
+             }></Route>
           <Route path="/detalle/:id" element={<DetalleProducto  />}></Route>
+          <Route path="/login" element={<Login />}></Route>
         </Routes>
      
      
