@@ -11,7 +11,7 @@ const ListadoProductos = ({})=>{
 
 
     useEffect(()=>{
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos')
         .then((respuesta) => respuesta.json())
         .then((datos) => {
             setProductos(datos);

@@ -10,8 +10,10 @@ const Tarjeta = (props) => {
   return (
     <>
       <div className="card">
-        <h2>{props.item.title}</h2>
-        <p>${props.item.price}</p>
+        <h2>{props.item.nombre}</h2>
+        <p>${props.item.precio}</p>
+        
+        <img src={props.item.avatar}/>
         <button onClick={() => agregarProducto(props.item)}> Agregar al carrito </button>
         <button><Link to={`/detalle/${props.item.id}`}> Detalle </Link></button>
       </div>
