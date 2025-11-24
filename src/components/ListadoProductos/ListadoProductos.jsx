@@ -13,8 +13,7 @@ const ListadoProductos = ({})=>{
 if(cargando)
     return <>Cargando...</>
 
-if(error)
-    return <>Error: {error}</>
+if (error) return <>Error: {error?.message ?? String(error)}</>;
 
 if(!listadoProductoFiltrado || listadoProductoFiltrado.length === 0){
    

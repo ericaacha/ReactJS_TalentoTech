@@ -24,7 +24,6 @@ const API_URL="https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos/";
         .then((respuesta) => respuesta.json())
         .then((datos) => {
             setProductos(datos);
-            setListadoFiltrado(datos);
             setCargando(false);
         })
         .catch((error)=> {
