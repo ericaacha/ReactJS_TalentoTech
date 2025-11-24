@@ -8,10 +8,12 @@ export function ProductoProvider({children}) {
  const [cargando, setCargando] = useState(true);
  const [error, setError] = useState(null);
  const [producto, setProducto] = useState(null);
+
 const API_URL="https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos/";
    
 
     useEffect(()=> {getListadoProductos()}, []);
+
 
     const getListadoProductos = async() =>
     {
@@ -22,6 +24,7 @@ const API_URL="https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos/";
         .then((respuesta) => respuesta.json())
         .then((datos) => {
             setProductos(datos);
+            setListadoFiltrado(datos);
             setCargando(false);
         })
         .catch((error)=> {
@@ -145,7 +148,8 @@ const confirmar = window.confirm("¿Estás seguro de eliminar?");
     AgregarProducto,
     actualizarProducto,
     setProducto,
-    eliminarProducto}}>
+    eliminarProducto,
+    setProductos}}>
         {children}
     </ProductoContext.Provider>);
 

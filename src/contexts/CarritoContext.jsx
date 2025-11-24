@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import {toast} from "react-toastify"
 
 
 export const CarritoContext = createContext();
@@ -12,6 +12,7 @@ export function CarritoProvider({children}) {
 
     const agregarProducto = (producto)=>{
         setCarrito([...carrito, producto]);
+        toast.success("Producto agregado al carrito")
     }
 
     const vaciarCarrito = ()=>{

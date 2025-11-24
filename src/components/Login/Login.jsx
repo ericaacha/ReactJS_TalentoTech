@@ -14,8 +14,6 @@ const handleSubmit = (e) =>{
     e.preventDefault();
     if(usuario == "admin" && password=="1234"){
      login(usuario);
-     navigate('/administracion');
-
     }else{
         alert("credenciales incorrectas");
     }
