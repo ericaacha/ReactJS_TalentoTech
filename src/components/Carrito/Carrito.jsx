@@ -16,8 +16,8 @@ if(carrito.length>0){
     <ul className={styles.carritoLista}>
         {carrito.map((item, index) => (
             <li key={index} className={styles.carritoItem}>
-            <span className={styles.carritoTitle}>{item.title}</span>
-            <span className={styles.carritoPrice}>${item.price}</span>
+            <span className={styles.carritoTitle}>{item.nombre}</span>
+            <span className={styles.carritoPrice}>${item.precio}</span>
             <span className={styles.carritoEliminar}><button onClick={()=>eliminarProducto(item)}>Eliminar</button></span>
             </li>
         ))}

@@ -7,6 +7,7 @@ const Tarjeta = (props) => {
 
   const {agregarProducto} = useContext(CarritoContext);
  
+  
   return (
     <>
       <div className="card">

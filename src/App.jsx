@@ -14,7 +14,7 @@ import ListadoProductos from './components/ListadoProductos/ListadoProductos'
 import DetalleProducto from './components/DetalleProducto/DetalleProducto'
 import Login from './components/Login/Login'
 import RutaProtegida from './components/Utils/RutaProtegida'
-import AltaProducto from './components/Producto/AltaProducto'
+import AltaProducto from './components/Administracion/Productos/AltaProducto'
 
 function App() {
 
@@ -42,11 +42,12 @@ function App() {
              }></Route>
           <Route path="/detalle/:id" element={<DetalleProducto  />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path= "/altaProducto" element={
-            <RutaProtegida>
+          <Route path= "/altaProducto/:id?" element={
+            // <RutaProtegida>
               <AltaProducto />
-            </RutaProtegida>
+           // </RutaProtegida>
           }></Route>
+          
         </Routes>
      
      

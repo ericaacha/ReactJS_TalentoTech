@@ -1,31 +1,11 @@
 import { useEffect, useState, useContext } from "react";
 import Tarjeta from "../Tarjeta/Tarjeta";
 import styles from './ListadoProductos.module.css'
-import { CarritoContext } from '../../contexts/CarritoContext';
+import { ProductoContext } from "../../contexts/ProductoContext";
 
 const ListadoProductos = ({})=>{
 
-    const [listadoProductos, setProductos] = useState([]);
-    const [cargando, setCargando] = useState(true);
-    const [error, setErrorFetch] = useState(null);
-
-
-    useEffect(()=>{
-        fetch('https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos')
-        .then((respuesta) => respuesta.json())
-        .then((datos) => {
-            setProductos(datos);
-            setCargando(false);
-        })
-        .catch((error)=> {
-            setErrorFetch(error);
-            setCargando(false);
-    });
-
-
-    },[]);
-
-
+   const {cargando, error, listadoProductos} = useContext(ProductoContext);
 
 if(cargando)
     return <>Cargando...</>
