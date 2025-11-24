@@ -14,7 +14,7 @@ import ListadoProductos from './components/ListadoProductos/ListadoProductos'
 import DetalleProducto from './components/DetalleProducto/DetalleProducto'
 import Login from './components/Login/Login'
 import RutaProtegida from './components/Utils/RutaProtegida'
-import AltaProducto from './components/Administracion/Productos/AltaProducto'
+import AltaModificacionProducto from './components/Administracion/AltaModificacionProducto'
 
 function App() {
 
@@ -29,9 +29,10 @@ function App() {
        <Routes>
           <Route path="/galeria" element={<Gallery />}></Route>
           <Route path="/administracion" element={
-            <RutaProtegida>
+           // <RutaProtegida>
                 <Administracion />
-            </RutaProtegida>}>
+         //</RutaProtegida>
+         }>
           </Route>
           <Route path="/about" element={<About />}></Route>
           <Route path="/productos" element={<ListadoProductos/>}></Route>
@@ -42,9 +43,9 @@ function App() {
              }></Route>
           <Route path="/detalle/:id" element={<DetalleProducto  />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path= "/altaProducto/:id?" element={
+          <Route path= "/AltaModificacionProducto/:id?" element={
             // <RutaProtegida>
-              <AltaProducto />
+              <AltaModificacionProducto />
            // </RutaProtegida>
           }></Route>
           

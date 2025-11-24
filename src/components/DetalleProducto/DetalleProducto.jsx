@@ -10,11 +10,11 @@ const DetalleProducto = (props)=>{
 const {cargando, error, producto, getProductoById} = useContext(ProductoContext);    
 
     useEffect(() => {
-        if (!id) return;
+        
         getProductoById(id);  
     }, [id]);
 
-    if(cargando){
+    if(!producto){
         return <>Cargando...</>
     }
 
@@ -26,7 +26,7 @@ const {cargando, error, producto, getProductoById} = useContext(ProductoContext)
     <h2>{producto.nombre}</h2>
     <p>{producto.descripcion}</p>
     <p>{producto.precio}</p>
-    <img src={producto.avantar}></img>
+    <img src={producto.avatar}></img>
     </>
 
 

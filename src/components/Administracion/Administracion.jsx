@@ -1,29 +1,61 @@
 import {Link} from "react-router-dom";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {ProductoContext} from  "../../contexts/ProductoContext"
+import AltaModificacionProducto from "./AltaModificacionProducto";
 
 const Administracion = ()=>{
 
 const { listadoProductos, eliminarProducto} = useContext(ProductoContext);
+const [mostrarForm, setMostrarForm] = useState(false);
+const [modoForm, setModoForm] = useState("agregar");
+const [productoSeleccionado, setProductoSeleccionado] = useState({});
 
+const abrirFormParaEditar = (producto1)=> {
+    setProductoSeleccionado(producto1);
+    setMostrarForm(true);
+    setModoForm("editar");
+}
 
+const abrirFormParaAgregar = ()=> {
+    setProductoSeleccionado({});
+    setMostrarForm(true);
+    setModoForm("agregar");
+}
+
+const mostrarGrilla = () => {
+    setProductoSeleccionado({});
+    setMostrarForm(false);
+}
     return <>
     <h2>Gestión de productos</h2>
-    <Link to="/AltaProducto">Alta Producto</Link>
+   
  
+    {!mostrarForm && 
+     <button onClick={()=>abrirFormParaAgregar()}>Nuevo</button> &&
     <ul>
     {listadoProductos.map( (item,index) =>
            <li key={index}>
                 {item.nombre}
-               <Link to={"/AltaProducto/"+item.id} >Editar</Link>
-               
-               <button onClick={()=>eliminarProducto(item.id)}>Eliminar</button>
+                <button onClick={()=>abrirFormParaEditar(item)}>Editar</button>
+                <button onClick={()=>eliminarProducto(item.id)}>Eliminar</button>
             </li>
             
         )
     }
 
-     </ul>
+     </ul>}
+
+    {mostrarForm && (
+        <>
+        <AltaModificacionProducto modo= {modoForm} 
+        productoInicial={productoSeleccionado || {}}
+        mostrarGrilla={mostrarGrilla}
+        />
+
+        
+        </>
+
+    )}
 
     </>
 }

@@ -11,10 +11,8 @@ export function ProductoProvider({children}) {
 const API_URL="https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos/";
    
 
-useEffect(()=> {getListadoProductos()}, []);
-// useEffect(() => {
-//     cargarProductos();
-//   }, []);
+    useEffect(()=> {getListadoProductos()}, []);
+
     const getListadoProductos = async() =>
     {
      setError(null);
@@ -31,7 +29,6 @@ useEffect(()=> {getListadoProductos()}, []);
             setCargando(false);
         });
     }
-
 
 
     const getProductoById = (id) => {
