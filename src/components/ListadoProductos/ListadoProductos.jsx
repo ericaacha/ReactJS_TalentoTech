@@ -8,14 +8,19 @@ import { SearchContext } from "../../contexts/SearchContext";
 const ListadoProductos = ({})=>{
 
    const {cargando, error} = useContext(ProductoContext);
-   const {listadoProductoFiltrado} = useContext(SearchContext);
+   const {listadoProductoFiltrado, setListadoFiltrado, valorBusqueda} = useContext(SearchContext);
+   const {listadoProductos} = useContext(ProductoContext);
 
 if(cargando)
     return <>Cargando...</>
 
 if (error) return <>Error: {error?.message ?? String(error)}</>;
 
-if(!listadoProductoFiltrado || listadoProductoFiltrado.length === 0){
+if(valorBusqueda.trim()===""){
+    setListadoFiltrado(listadoProductos);
+}
+
+if(valorBusqueda.trim()!="" && (!listadoProductoFiltrado || listadoProductoFiltrado.length === 0)){
    
     return <>
      <Buscador /><br></br>

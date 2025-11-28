@@ -15,10 +15,11 @@ import DetalleProducto from './components/DetalleProducto/DetalleProducto'
 import Login from './components/Login/Login'
 import RutaProtegida from './components/Utils/RutaProtegida'
 import AltaModificacionProducto from './components/Administracion/AltaModificacionProducto'
+import { ToastContainer } from "react-toastify";
 
 function App() {
 
-   const[isAuthenticated, setIsAuthenticated] = useState(false);
+  //  const[isAuthenticated, setIsAuthenticated] = useState(false);
 
 
   return (
@@ -29,9 +30,9 @@ function App() {
        <Routes>
           <Route path="/galeria" element={<Gallery />}></Route>
           <Route path="/administracion" element={
-           // <RutaProtegida>
+            <RutaProtegida>
                 <Administracion />
-         //</RutaProtegida>
+         </RutaProtegida>
          }>
           </Route>
           <Route path="/about" element={<About />}></Route>
@@ -53,7 +54,7 @@ function App() {
      
      
       <Footer></Footer>
-      
+      <ToastContainer />
    
     </div>
 
