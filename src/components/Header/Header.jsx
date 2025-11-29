@@ -10,8 +10,12 @@ const Header = () => {
     return <>
 
         <header className="header-minimalista">
+          <div>
+             <Link className="botonMinimalista" to="/productos">
             <h1 className="titulo-minimalista">Electro tienda</h1>
-            <Link className="botonMinimalista" to="/carrito"><FaShoppingCart /> Carrito</Link>
+           </Link>
+           </div>
+           <div><Link className="botonMinimalista" to="/carrito"><FaShoppingCart /> Carrito</Link>
              {user ? (
               <button className="botonMinimalista" onClick={logout}>Cerrar sesión</button>
             ) : (
@@ -20,7 +24,7 @@ const Header = () => {
           
            {user?.rol === 'admin'?
            <Link className="botonMinimalista" to="/administracion">Administración</Link>:''}
-   
+        </div>
         </header>
 
 

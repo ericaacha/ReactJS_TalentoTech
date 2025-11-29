@@ -9,10 +9,13 @@ export const CarritoContext = createContext();
 export function CarritoProvider({children}) {
 
    const[carrito, setCarrito] = useState([]);
+   const [precioTotal, setPrecioTotal] = useState(0);
 
     const agregarProducto = (producto)=>{
         setCarrito([...carrito, producto]);
-        toast.success("Producto agregado al carrito")
+        const total = Number(precioTotal)+Number(producto.precio);
+        setPrecioTotal(total);
+        toast.success("Producto agregado al carrito");
     }
 
     const vaciarCarrito = ()=>{
@@ -20,11 +23,15 @@ export function CarritoProvider({children}) {
     }
     
     const eliminarProducto = (item)=>{
-        setCarrito(carrito.filter(producto => producto.id != item.id))
+        setCarrito(carrito.filter(producto => producto.id != item.id));
+        toast.success("Producto eliminado del carrito");
+        setPrecioTotal(Number(precioTotal)-Number(item.precio));
     }
 
     return (
-        <CarritoContext.Provider value={{ carrito, agregarProducto, vaciarCarrito, eliminarProducto }} >
+        <CarritoContext.Provider value={{ carrito, 
+        agregarProducto, vaciarCarrito, eliminarProducto,
+        precioTotal }} >
          {children}
          </CarritoContext.Provider>
 

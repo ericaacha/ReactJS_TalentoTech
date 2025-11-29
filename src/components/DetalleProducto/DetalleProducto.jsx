@@ -7,10 +7,9 @@ const DetalleProducto = (props)=>{
 
     const {id} = useParams();
     
-const {cargando, error, producto, getProductoById} = useContext(ProductoContext);    
+const {error, producto, getProductoById} = useContext(ProductoContext);    
 
     useEffect(() => {
-        
         getProductoById(id);  
     }, [id]);
 
@@ -25,7 +24,7 @@ const {cargando, error, producto, getProductoById} = useContext(ProductoContext)
     return <>
     <h2>{producto.nombre}</h2>
     <p>{producto.descripcion}</p>
-    <p>{producto.precio}</p>
+    <p>{producto.precio}$</p>
     <img src={producto.avatar}></img>
     </>
 

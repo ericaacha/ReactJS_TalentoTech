@@ -7,10 +7,9 @@ import { SearchContext } from "../../contexts/SearchContext";
 
 const ListadoProductos = ({})=>{
 
-   const {cargando, error} = useContext(ProductoContext);
+   const {cargando, error, listadoProductos} = useContext(ProductoContext);
    const {listadoProductoFiltrado, setListadoFiltrado, valorBusqueda} = useContext(SearchContext);
-   const {listadoProductos} = useContext(ProductoContext);
-
+ 
 if(cargando)
     return <>Cargando...</>
 

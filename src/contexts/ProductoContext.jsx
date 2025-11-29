@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect} from "react";
+import {toast} from "react-toastify"
 
 export const ProductoContext = createContext();
 
@@ -51,7 +52,6 @@ const API_URL="https://691d0718d58e64bf0d34c432.mockapi.io/v1/productos/";
 const actualizarProducto = async (producto) => {
 
 try{
-    debugger;
     setCargando(true);
     setError(null);
     const respuesta = await fetch(API_URL+producto.id,
@@ -100,11 +100,14 @@ const AgregarProducto = async (productoForm)=>{
 
         if(!respuesta.ok){
             throw new Error ('Error al agregar producto');
+           
         }else
         {
-            console.log("Producto agregado con éxito");
+            const nuevoProducto = await respuesta.json();
+
             //se agrega en el estado global
-            setProductos(listado => [productoForm, ...listado]);
+            setProductos(listado => [nuevoProducto, ...listado]);
+            toast.success("Producto agregado");
         }
 
     }catch(error){

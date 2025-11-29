@@ -48,7 +48,7 @@ const AltaModificacionProducto = ({ productoInicial = {}, modo = "agregar" , mos
 
         const nuevosErrores ={};
 
-        if(!formProducto.nombre.trim()){
+        if(!formProducto.nombre?.trim()){
             nuevosErrores.nombre="El nombre es obligatorio.";
         }
 
@@ -56,7 +56,7 @@ const AltaModificacionProducto = ({ productoInicial = {}, modo = "agregar" , mos
             nuevosErrores.precio = "El precio debe ser mayor o igual a cero."
         }
 
-        if(!formProducto.descripcion.trim() || formProducto.descripcion.length<10){
+        if(!formProducto.descripcion?.trim() || formProducto.descripcion.length<10){
             nuevosErrores.descripcion="La descripción debe ser la menos 10.";
         }
         setErrores(nuevosErrores);
@@ -74,44 +74,80 @@ const AltaModificacionProducto = ({ productoInicial = {}, modo = "agregar" , mos
 
     }
     return (<>
+<div className="container d-flex justify-content-center">
+        <div className="col-12 col-sm-12 col-md-12">
+           
+          <form onSubmit={handleSubmit} className="p-4 rounded shadow-sm bg-white border-0">
+<           h2>{modo==="editar"?"Edición producto":"Alta producto"}</h2>
+            <div className="row g-3 align-items-center mb-3">
+              <div className="col-4">
+                <label htmlFor="nombre" className="col-form-label">Nombre</label>
+              </div>
+              <div className="col-8">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="nombre"
+                  name="nombre"
+                  value={formProducto.nombre || ''}
+                  placeholder="ingrese nombre"
+                  onChange={handleChange}
+                />
+                {errores.nombre && <div className="invalid-feedback d-block">{errores.nombre}</div>}
+          
+              </div>
+            </div>
 
-    <form onSubmit={handleSubmit}>
+            <div className="row g-3 align-items-center mb-3">
+              <div className="col-4">
+                <label htmlFor="precio" className="col-form-label">Precio</label>
+              </div>
+              <div className="col-8">
+                 <input type="number"
+                        name="precio"
+                        className="form-control"
+                        id="precio"
+                        value={formProducto.precio || ''}
+                        placeholder="ingrese precio"
+                        onChange={handleChange}
+                        />
+               {errores.precio && <div className="invalid-feedback d-block">{errores.precio}</div>}
+          
+              </div>
+            </div>
+        <div className="row g-3 align-items-center mb-3">
+              <div className="col-4">
+                <label htmlFor="descripcion" className="col-form-label">Descripción</label>
+              </div>
+              <div className="col-8">
+                
+                <input
+                  type="text"
+                  name="descripcion"
+                  className="form-control"
+                  id="descripcion"
+                  value={formProducto.descripcion || ''}
+                  placeholder="ingrese descripcion"
+                   onChange={handleChange}
+                />
+                {errores.descripcion && <div className="invalid-feedback d-block">{errores.descripcion}</div>}
+          
+             
+              </div>
+            </div>
 
-        <h2>{modo==="editar"?"Edición producto":"Alta producto"}</h2>
-        <div>
-            <label>Nombre</label>
-            <input type="text"
-             name="nombre"
-             value={formProducto.nombre || ''}
-             onChange={handleChange}
-             ></input>
-            {errores.nombre && <p style={{color:'red'}}>{errores.nombre}</p>}
+            <div className="row mt-3">
+                <div className="col-6">
+                <button className="btn btn-outline-secondary w-100" onClick={()=>volver() }>Cancelar</button>
+                </div>
+                <div className="col-6">
+                <button type="submit" className="btn btn-primary w-100">{modo==="agregar"? 'Agregar':'Guardar'}</button>
+           </div>
+            </div>
+          </form>
         </div>
-
-         <div>
-            <label>Precio</label>
-            <input type="number"
-             name="precio"
-             value={formProducto.precio || ''}
-             onChange={handleChange}
-             ></input>
-             {errores.precio && <p style={{color:'red'}}>{errores.precio}</p>}
-        </div>
-
-        <div>
-            <label>Descripción</label>
-            <textarea type="text"
-             name="descripcion"
-             value={formProducto.descripcion || ''}
-             onChange={handleChange}
-              />
-             {errores.descripcion && <p style={{color:'red'}}>{errores.descripcion}</p>}
-        </div>
-
-        <button onClick={()=>volver()}>Cancelar</button>
-        <button type="submit">{modo==="agregar"? 'Agregar':'Guardar'}</button>
-        
-    </form>
+      </div>
+    
     </>);
 }
 

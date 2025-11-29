@@ -1,10 +1,10 @@
 import { CarritoContext } from '../../contexts/CarritoContext';
 import styles from './Carrito.module.css'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 const Carrito = ()=>{
 
-const {carrito, vaciarCarrito, eliminarProducto} = useContext(CarritoContext);
+const {carrito, vaciarCarrito, eliminarProducto, precioTotal} = useContext(CarritoContext);
 
 if(carrito == undefined || carrito.length == 0)
     return <>Carrito Vacío</>
@@ -23,7 +23,7 @@ if(carrito.length>0){
         ))}
     </ul>
 
-    
+    <p>Total: {precioTotal}</p>
     <button onClick={vaciarCarrito}>Vaciar carrito</button>
 
     </>

@@ -17,8 +17,8 @@ const Buscador = ()=>{
         }else{
         setListadoFiltrado(listadoProductos.filter((producto)=>producto.nombre.includes(valorBusqueda)
             ));
-        }
-   }, [valorBusqueda]);
+        }   
+   }, [valorBusqueda, listadoProductos]);
 
  const handleChange = (e) => {
         const {name, value} = e.target;
@@ -30,11 +30,19 @@ setValorBusqueda(value);
     }
 
     return(<>
-        <input type="text"
-        value={valorBusqueda}
-        placeholder="Ingrese producto para buscar" 
-        onChange={handleChange}
-        />
+    <div className="d-flex justify-content-center">
+        <form className="col-6  my-4" role="search">
+            <input className="form-control me-2 justify-content-center"
+            type="search"
+            placeholder="Ingrese producto para buscar" 
+            aria-label="Search"
+            onChange={handleChange}
+            value={valorBusqueda} />
+        
+        </form>
+       
+       </div>
+       
     </>);
 
 
